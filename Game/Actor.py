@@ -7,6 +7,7 @@ class Actor(object):
         self._defense_damage = 0
         self._base_hp = hp
         self._hp = hp
+        self._exp = 0
 
     def add_item(self, item):
         self._items.append(item)
@@ -39,4 +40,7 @@ class Actor(object):
 
     def is_alive(self):
         return self._hp > 0
+
+    def won(self):
+        self._exp += 1
     
