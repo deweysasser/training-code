@@ -21,5 +21,30 @@ class testCharacter(unittest.TestCase):
         c.heal(hp)
 
         self.assertEqual(c.hp(), base_hp)
+
+
+    def test_exp(self):
+        c = Character("Winnter")
+
+        self.assertEqual(c.hp(), 100)
+        self.assertEqual(c.base_hp(), 100)
+
+        c.won()
+
+        self.assertEqual(c.hp(), 100)
+        self.assertEqual(c.base_hp(), 100)
+
+        c.won()
+
+        self.assertEqual(c.hp(), 100)
+        self.assertEqual(c.base_hp(), 106)
+
+        c.won()
+        c.won()
+        c.won()
+        c.won()
+
+        self.assertEqual(c.hp(), 100)
+        self.assertEqual(c.base_hp(), 115)
         
 

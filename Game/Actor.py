@@ -30,13 +30,16 @@ class Actor(object):
     def hp(self):
         return self._hp
 
+    def base_hp(self):
+        return self._base_hp
+
     def hurt(self, hp):
         self._hp -= hp
 
     def heal(self, hp):
         self._hp += hp
-        if self._hp > self._base_hp:
-            self._hp = self._base_hp
+        if self._hp > self.base_hp():
+            self._hp = self.base_hp()
 
     def is_alive(self):
         return self._hp > 0
