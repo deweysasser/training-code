@@ -5,7 +5,7 @@ from Item import *
 
 class testActor(unittest.TestCase):
     def test_attack_weight(self):
-        a = Actor();
+        a = Actor("test");
 
         self.assertEqual(0, a.attack_weight())
 

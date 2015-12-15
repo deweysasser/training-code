@@ -1,13 +1,18 @@
 class Actor(object):
-    def __init__(self, hp=100):
+    def __init__(self, name, hp=100, attack_weight=0, attack_damage=0, defense_weight=0, defense_damage=0):
         self._items = []
-        self._attack_weight  = 0
-        self._attack_damage  = 0
-        self._defense_weight = 0
-        self._defense_damage = 0
+        self._name = name
+        self._attack_weight  = attack_weight
+        self._attack_damage  = attack_damage
+        self._defense_weight = defense_weight
+        self._defense_damage = defense_damage
         self._base_hp = hp
         self._hp = hp
+
         self._exp = 0
+
+    def name(self):
+        return self._name
 
     def add_item(self, item):
         self._items.append(item)

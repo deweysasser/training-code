@@ -5,48 +5,49 @@ import random
 class Librarian(object):
     ''' Manage in-game characters, mobs, objects '''
     def __init__(self, seed=None):
-        self.characters = {}
-        self.mobs = []
-        self.items = []
+        self._characters = {}
+        self._mobs = {}
+        self.items = {}
         self.random = random.Random(seed)
 
     def load(self, file):
         with open(file) as f:
-            self.characters = pickle.load(f)
-            self.mobs = pickle.load(f)
+            self._characters = pickle.load(f)
+            self._mobs = pickle.load(f)
             self.items = pickle.load(f)
 
     def save(self, file):
         with open(file, "w") as f:
-            pickle.dump(self.characters, f)
-            pickle.dump(self.mobs, f)
+            pickle.dump(self._characters, f)
+            pickle.dump(self._mobs, f)
             pickle.dump(self.items, f)
 
     def character_names(self):
-        return self.characters.keys()
+        return self._characters.keys()
 
     def mob_names(self):
-        return [x._name for x in self.mobs]
+        return self._mobs.keys()
 
     def items(self):
         return self.items
 
-    def character(self, name, ch=None):
-        if ch is not None:
-            ch.full_heal()
-            self.characters[name] = ch
+    def put_character(self, char):
+        char.full_heal()
+        self._characters[char.name()] = char
 
-        return self.characters[name]
+    def get_character(self, name):
+        return self._characters[name]
 
-    def purge(self):
-        for k, v in self.characters:
+    def purge_dead(self):
+        for k, v in self._characters:
             if not v.is_alive():
-                del self.characters[k]
+                del self._characters[k]
 
-    def mob(self, name, mo=None):
-        if mo is not None:
-            self.mobs[name] = mo
-        return copy.deepcopy(self.mobs[name])
+    def put_mob(self, mob):
+        self._mobs[mob.name()] = mob
+
+    def get_mob(self, name):
+        return copy.deepcopy(self._mobs[name])
 
     def random_mob(self):
         # a bit ugly -- perhaps we should not be naming mobs?

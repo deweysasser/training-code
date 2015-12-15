@@ -3,8 +3,7 @@ import math
 
 class Character(Actor):
     def __init__(self, name, *args, **kwargs):
-        super(Character, self).__init__(*args, **kwargs)
-        self._name = name
+        super(Character, self).__init__(name, *args, **kwargs)
 
     def full_heal(self):
         self._hp = self._base_hp
