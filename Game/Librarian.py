@@ -55,7 +55,7 @@ class Librarian(object):
     def random_mob(self):
         # a bit ugly -- perhaps we should not be naming mobs?
         names = self.mob_names()
-        i = self.random.randrange(0, names)
-        return self.mob(names[i])
+        i = self.random.randrange(0, len(names))
+        return self._mobs[names[i]]
     
             

@@ -73,3 +73,14 @@ class testLibrarian(unittest.TestCase):
         l.purge_dead()
 
         self.assertEquals(len(l.character_names()), 0)
+
+    def test_random_mob(self):
+        l = Librarian(seed=0)
+
+        l.put_mob(Creature("Slime", hp=20))
+        l.put_mob(Creature("cat", hp=10, attack_weight=1, defense_weight=2))
+        l.put_mob(Creature("dog", hp=20, attack_damage=2))
+
+        self.assertEquals(l.random_mob().name(), "cat")
+        
+        
