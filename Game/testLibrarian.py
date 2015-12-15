@@ -58,3 +58,18 @@ class testLibrarian(unittest.TestCase):
         self.assertTrue(len(l.character_names()), len(l2.character_names()))
         self.assertFalse(l.get_character("John") is l2.get_character("James"))
 
+
+
+    def test_purge(self):
+        l = Librarian()
+        c1 = Character("John")
+        l.put_character(c1)
+
+
+        self.assertEquals(len(l.character_names()), 1)
+
+        c1.hurt(c1.hp() + 1)
+
+        l.purge_dead()
+
+        self.assertEquals(len(l.character_names()), 0)

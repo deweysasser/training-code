@@ -16,6 +16,9 @@ class Librarian(object):
             self._mobs = pickle.load(f)
             self.items = pickle.load(f)
 
+        self.purge_dead()
+
+
     def save(self, file):
         with open(file, "w") as f:
             pickle.dump(self._characters, f)
@@ -39,7 +42,7 @@ class Librarian(object):
         return self._characters[name]
 
     def purge_dead(self):
-        for k, v in self._characters:
+        for k, v in copy.copy(self._characters).iteritems():
             if not v.is_alive():
                 del self._characters[k]
 
