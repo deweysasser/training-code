@@ -11,7 +11,7 @@ class Character(Actor):
         # TODO: there's a bug here -- this should use the base_hp()
         # method.  Clearly I've never tested this case despite the
         # fact that we've covered it
-        self._hp = self._base_
+        self._hp = self._base_hp
 
     def base_hp(self):
         ''' Character base HP is based on actual base HP plus a factor related to experience '''

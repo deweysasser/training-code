@@ -2,7 +2,7 @@ import pickle
 import copy
 import random
 
-class Librarian(object):
+class Library(object):
     ''' Manage in-game characters, mobs, objects '''
     def __init__(self, seed=None):
         self._characters = {}

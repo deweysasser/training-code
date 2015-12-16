@@ -1,11 +1,11 @@
 import unittest
-from Librarian import *
+from Library import *
 from Character import *
 from Creature import *
 
-class testLibrarian(unittest.TestCase):
+class testLibrary(unittest.TestCase):
     def test_characters(self):
-        l = Librarian()
+        l = Library()
         c1 = Character("John")
         c2 = Character("James")
         l.put_character(c1)
@@ -18,7 +18,7 @@ class testLibrarian(unittest.TestCase):
         self.assertTrue(l.get_character("James") is c2)
 
     def test_mobs(self):
-        l = Librarian()
+        l = Library()
 
         l.put_mob(Creature("Slime", hp=20))
         l.put_mob(Creature("cat", hp=10, attack_weight=1, defense_weight=2))
@@ -28,7 +28,7 @@ class testLibrarian(unittest.TestCase):
 
     def test_mob_cloning(self):
 
-        l = Librarian()
+        l = Library()
 
         slime = Creature("Slime", hp=20)
         l.put_mob(slime)
@@ -38,7 +38,7 @@ class testLibrarian(unittest.TestCase):
 
 
     def test_load_save(self):
-        l = Librarian()
+        l = Library()
         c1 = Character("John")
         c2 = Character("James")
         l.put_character(c1)
@@ -52,7 +52,7 @@ class testLibrarian(unittest.TestCase):
 
         l.save("test.dat")
 
-        l2 = Librarian()
+        l2 = Library()
         l2.load("test.dat")
 
         self.assertTrue(len(l.character_names()), len(l2.character_names()))
@@ -61,7 +61,7 @@ class testLibrarian(unittest.TestCase):
 
 
     def test_purge(self):
-        l = Librarian()
+        l = Library()
         c1 = Character("John")
         l.put_character(c1)
 
@@ -75,7 +75,7 @@ class testLibrarian(unittest.TestCase):
         self.assertEquals(len(l.character_names()), 0)
 
     def test_random_mob(self):
-        l = Librarian(seed=0)
+        l = Library(seed=0)
 
         l.put_mob(Creature("Slime", hp=20))
         l.put_mob(Creature("cat", hp=10, attack_weight=1, defense_weight=2))
