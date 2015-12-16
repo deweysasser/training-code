@@ -1,4 +1,4 @@
-from Actor import *
+from actor import *
 
 class Creature(Actor):
     ''' An actor that is a creature.  They're dumb -- no XP stats bonuses'''

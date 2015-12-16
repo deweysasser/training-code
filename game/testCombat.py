@@ -1,7 +1,7 @@
 import unittest
-from Character import *
-from Combat import *
-from Item import *
+from character import *
+from combat import *
+from item import *
 
 
 class testCombat(unittest.TestCase):

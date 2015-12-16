@@ -1,5 +1,5 @@
 import unittest
-from Character import *
+from character import *
 
 class testCharacter(unittest.TestCase):
     def test_basic(self):

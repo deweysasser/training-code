@@ -1,7 +1,7 @@
 import unittest
 
-from Actor import *
-from Item import *
+from actor import *
+from item import *
 
 class testActor(unittest.TestCase):
     def test_attack_weight(self):

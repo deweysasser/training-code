@@ -1,7 +1,7 @@
 import unittest
-from Library import *
-from Character import *
-from Creature import *
+from library import *
+from character import *
+from creature import *
 
 class testLibrary(unittest.TestCase):
     def test_characters(self):

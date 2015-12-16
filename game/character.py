@@ -1,4 +1,4 @@
-from Actor import *
+from actor import *
 import math
 
 class Character(Actor):
